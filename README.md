@@ -3,7 +3,7 @@
 ![displayer-thumb](https://github.com/user-attachments/assets/e71abfd5-1c4e-4690-8eee-196a05c98e7c)
 
 **Author:** The French Monkey (TFMSTYLE)  
-**Version:** 1.0.1  
+**Version:** 1.0.2  
 
 ---
 

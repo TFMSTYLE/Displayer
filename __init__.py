@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Displayer",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Displayer",
     "description": "Toggle multiple objects display",
@@ -13,6 +13,11 @@ bl_info = {
 }
 
 import bpy
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # --------------------
 # Utilities
@@ -78,6 +83,8 @@ class VIEW3D_PT_displayer(bpy.types.Panel):
     bl_category = 'Displayer'
 
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         scene = context.scene
         selected = list(context.selected_objects)
@@ -105,6 +112,8 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-displayer")
     for c in classes:
         bpy.utils.register_class(c)
 
@@ -121,6 +130,8 @@ def register():
     )
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     del bpy.types.Scene.displayer_display_type
 
     for c in reversed(classes):
