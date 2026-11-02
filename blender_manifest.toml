@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "tfmstyle_displayer"
-version = "1.0.2"
+version = "1.0.3"
 name = "TFMSTYLE - Displayer"
 tagline = "Toggle multiple objects display"
 maintainer = "The French Monkey"
